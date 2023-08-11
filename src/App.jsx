@@ -1,6 +1,9 @@
-import "./App.css";
+import ResNavbar from "./Parts/ResNavbar/ResNavbar";
+
 function App() {
-  return <div></div>;
+  return <div>
+    <ResNavbar></ResNavbar>
+  </div>;
 }
 
 export default App;
