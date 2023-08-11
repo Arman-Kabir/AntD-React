@@ -1,9 +1,20 @@
 import { Input, List, Typography } from "antd";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const ResImageGallery = () => {
   const [searchedText, setSearchedText] = useState("");
   const [dataSource,setDataSource] = useState([]);
+
+    useEffect(()=>{
+        // API CALL 
+        fetch(`https://dummyjson.com/products/search?q=${searchedText}`)
+        .then(res => res.json())
+        .then(response=>{
+            setDataSource(response.products)
+        });
+    },[searchedText]);
+
+
   return (
     <div>
       <Typography.Title
@@ -19,7 +30,7 @@ const ResImageGallery = () => {
         }}
       ></Input.Search>
 
-      <List dataSource={}></List>
+      <List dataSource={dataSource}></List>
     </div>
   );
 };
